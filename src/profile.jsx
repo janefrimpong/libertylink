@@ -27,7 +27,9 @@ const Profile = () => {
                             <label className="block text-sm font-medium text-gray-700">Nationality</label>
                             <select className="mt-1 w-full px-3 py-2 border rounded-md">
                                 <option>Select your nationality</option>
-                                {/* Add options here */}
+                                <option>Ghana</option>
+                                <option>Ghana</option>
+                                
                             </select>
                         </div>
                         <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>
@@ -41,6 +43,9 @@ const Profile = () => {
                             <label className="block text-sm font-medium text-gray-700">Preferred Language</label>
                             <select className="mt-1 w-full px-3 py-2 border rounded-md">
                                 <option>Select your preferred language</option>
+                                <option>English</option>
+                                <option>French</option>
+                                
                                 {/* Add options here */}
                             </select>
                         </div>
@@ -64,12 +69,42 @@ const Profile = () => {
                             <label className="block text-sm font-medium text-gray-700">Areas of Interest in Human Rights</label>
                             <div className="grid grid-cols-2 gap-2 mt-2">
                                 <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Area of Interest 1
+                                    <input type="checkbox" className="mr-2" /> Civil Rights
+                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Economic Rights
+                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" />Cultural Rights
+                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" />Children's Rights
+                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Disability Rights                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Digital Rights                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Social Rights                                </label>
+
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" />Political  Rights
+                                </label>
+                                
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" />Labor  Rights
                                 </label>
                                 <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Area of Interest 2
+                                    <input type="checkbox" className="mr-2" />Environmental Rights
                                 </label>
-                                {/* Add more options as needed */}
+                               
+                            
                             </div>
                         </div>
                         <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
