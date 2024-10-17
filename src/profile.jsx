@@ -1,10 +1,18 @@
+// Profile.jsx
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
     const [step, setStep] = useState(1); // Track the current step of the profile setup
+    const navigate = useNavigate(); // Add useNavigate hook
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
+
+    const finishProfile = () => {
+        // Navigate to Home page
+        navigate('/home');
+    };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
@@ -28,8 +36,7 @@ const Profile = () => {
                             <select className="mt-1 w-full px-3 py-2 border rounded-md">
                                 <option>Select your nationality</option>
                                 <option>Ghana</option>
-                                <option>Ghana</option>
-                                
+                                <option>Nigeria</option>
                             </select>
                         </div>
                         <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>
@@ -45,8 +52,6 @@ const Profile = () => {
                                 <option>Select your preferred language</option>
                                 <option>English</option>
                                 <option>French</option>
-                                
-                                {/* Add options here */}
                             </select>
                         </div>
                         <div>
@@ -71,40 +76,33 @@ const Profile = () => {
                                 <label className="flex items-center">
                                     <input type="checkbox" className="mr-2" /> Civil Rights
                                 </label>
-
                                 <label className="flex items-center">
                                     <input type="checkbox" className="mr-2" /> Economic Rights
                                 </label>
-
                                 <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" />Cultural Rights
-                                </label>
-
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" />Children's Rights
-                                </label>
-
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Disability Rights                                </label>
-
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Digital Rights                                </label>
-
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Social Rights                                </label>
-
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" />Political  Rights
-                                </label>
-                                
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" />Labor  Rights
+                                    <input type="checkbox" className="mr-2" /> Cultural Rights
                                 </label>
                                 <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" />Environmental Rights
+                                    <input type="checkbox" className="mr-2" /> Children's Rights
                                 </label>
-                               
-                            
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Disability Rights
+                                </label>
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Digital Rights
+                                </label>
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Social Rights
+                                </label>
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Political Rights
+                                </label>
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Labor Rights
+                                </label>
+                                <label className="flex items-center">
+                                    <input type="checkbox" className="mr-2" /> Environmental Rights
+                                </label>
                             </div>
                         </div>
                         <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
@@ -133,7 +131,7 @@ const Profile = () => {
                     <div className="text-center space-y-4">
                         <h3 className="text-xl font-semibold text-gray-800">Profile Setup Complete!</h3>
                         <p className="text-gray-600">Thank you for completing your profile. You're all set!</p>
-                        <button type="button" onClick={() => alert("Profile setup complete!")} className="w-full bg-green-600 text-white py-2 rounded-md">Finish</button>
+                        <button type="button" onClick={finishProfile} className="w-full bg-green-600 text-white py-2 rounded-md">Finish</button>
                     </div>
                 )}
             </div>
