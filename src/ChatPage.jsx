@@ -33,7 +33,7 @@ const ChatPage = () => {
                 </button>
             </header>
 
-            <div className="flex-1 p-4 overflow-y-auto">
+            <div className="flex-1 p-4 overflow-y-auto h-64"> {/* Reduced height */}
                 {messages.map((msg, index) => (
                     <div key={index} className={`mb-2 ${msg.sender === 'bot' ? 'text-left' : 'text-right'}`}>
                         <span className={`inline-block px-4 py-2 rounded-lg ${msg.sender === 'bot' ? 'bg-gray-200' : 'bg-blue-600 text-white'}`}>
