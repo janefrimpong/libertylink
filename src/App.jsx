@@ -7,6 +7,7 @@ import Overview from './Overview'; // Placeholder for new page
 import News from './News'; // Placeholder for new page
 import Events from './Events'; // Placeholder for new page
 import Resources from './Resources'; // Placeholder for new page
+import ChatPage from './ChatPage'; // Import your ChatPage component
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
                 <Route path="/news" element={<News />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/resources" element={<Resources />} />
+                <Route path="/chat" element={<ChatPage />} /> {/* Add chat route */}
             </Routes>
         </Router>
     );
