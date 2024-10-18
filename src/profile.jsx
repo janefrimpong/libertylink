@@ -38,39 +38,28 @@ const Profile = () => {
                                 <option>Ghana</option>
                                 <option>Nigeria</option>
                                 <option>Gambia</option>
-                                <option>South Africa</option>
+                               
                             </select>
-                        </div>
-                        <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>
-                    </form>
-                )}
+                            </div><div>
+                            
 
-                {/* Step 2: Additional Information */}
-                {step === 2 && (
-                    <form className="space-y-4">
-                        <div>
+
+                            
                             <label className="block text-sm font-medium text-gray-700">Preferred Language</label>
                             <select className="mt-1 w-full px-3 py-2 border rounded-md">
                                 <option>Select your preferred language</option>
                                 <option>English</option>
                                 <option>French</option>
                             </select>
+                        
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Occupation</label>
-                            <input type="text" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your occupation" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Organization</label>
-                            <input type="text" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your organization" />
-                        </div>
-                        <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
-                        <button type="button" onClick={nextStep} className="bg-blue-600 text-white py-2 px-4 rounded-md">Next</button>
+                        <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>
                     </form>
                 )}
 
+                
                 {/* Step 3: Areas of Interest */}
-                {step === 3 && (
+                {step === 2 && (
                     <form className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Areas of Interest in Human Rights</label>
@@ -99,12 +88,7 @@ const Profile = () => {
                                 <label className="flex items-center">
                                     <input type="checkbox" className="mr-2" /> Political Rights
                                 </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Labor Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Environmental Rights
-                                </label>
+                                
                             </div>
                         </div>
                         <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
@@ -113,7 +97,7 @@ const Profile = () => {
                 )}
 
                 {/* Step 4: File Uploads */}
-                {step === 4 && (
+                {step === 3 && (
                     <form className="space-y-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Upload ID</label>
@@ -129,7 +113,7 @@ const Profile = () => {
                 )}
 
                 {/* Step 5: Completion */}
-                {step === 5 && (
+                {step === 4 && (
                     <div className="text-center space-y-4">
                         <h3 className="text-xl font-semibold text-gray-800">Profile Setup Complete!</h3>
                         <p className="text-gray-600">Thank you for completing your profile. You're all set!</p>

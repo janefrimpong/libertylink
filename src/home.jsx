@@ -113,8 +113,10 @@ const Home = () => {
                     </div>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Welcome to the Human Rights Portal</h2>
-                <p className="text-gray-600 mb-6">Explore key information on human rights and engage with our community.</p>
+                <h1 className="text-2xl  font-bold mb-10 text-gray-800">Welcome to LibertyLink</h1>
+                <p className=" font-bold  mb-12"><i>Empowering Voices, Connecting Rights</i></p>
+                
+                
 
                 {/* Image Slider */}
                 <div className="relative w-full mb-6 h-64 overflow-hidden rounded-lg">
