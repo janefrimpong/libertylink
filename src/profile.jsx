@@ -37,6 +37,8 @@ const Profile = () => {
                                 <option>Select your nationality</option>
                                 <option>Ghana</option>
                                 <option>Nigeria</option>
+                                <option>Gambia</option>
+                                <option>South Africa</option>
                             </select>
                         </div>
                         <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>

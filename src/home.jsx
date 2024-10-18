@@ -1,6 +1,5 @@
-// Home.jsx
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaBars, FaTimes, FaChevronLeft, FaChevronRight, FaRobot } from 'react-icons/fa'; // Add FaRobot for chatbot
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import photo1 from './assets/components/interior decors (2).jpg';
 import photo2 from './assets/components/interior decors (22).jpg';
@@ -45,16 +44,16 @@ const Home = () => {
                 </div>
                 <ul className="space-y-2">
                     <li>
-                        <Link to="/overview" className="text-blue-600 hover:underline">Human Rights Overview</Link>
+                        <a href="#" className="text-blue-600 hover:underline">Human Rights Overview</a>
                     </li>
                     <li>
-                        <Link to="/news" className="text-blue-600 hover:underline">Recent News</Link>
+                        <a href="#" className="text-blue-600 hover:underline">Recent News</a>
                     </li>
                     <li>
-                        <Link to="/events" className="text-blue-600 hover:underline">Events</Link>
+                        <a href="#" className="text-blue-600 hover:underline">Events</a>
                     </li>
                     <li>
-                        <Link to="/resources" className="text-blue-600 hover:underline">Resources</Link>
+                        <a href="#" className="text-blue-600 hover:underline">Resources</a>
                     </li>
                 </ul>
             </aside>
@@ -99,10 +98,17 @@ const Home = () => {
                 </div>
 
                 <p className="text-gray-600 text-sm mt-6">
-                    Stay updated on the latest human rights news and events.
                     Join our community of human rights advocates and make a difference. Participate in discussions, attend webinars, and access valuable resources to further the cause of human rights in Africa.
                 </p>
             </main>
+
+            {/* Chatbot Link */}
+            <Link
+                to="/chat" // Link to your chat page
+                className="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-500"
+            >
+                <FaRobot className="text-2xl" />
+            </Link>
         </div>
     );
 };
