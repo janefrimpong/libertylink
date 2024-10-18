@@ -9,6 +9,8 @@ import Events from './Events'; // Placeholder for new page
 import Resources from './Resources'; // Placeholder for new page
 import ChatPage from './ChatPage'; // Import your ChatPage component
 import Account from './Account'; // Import the Account component
+import NotificationPage from './NotificationPage'; // Import the Notification component
+import Report from './Report'; // Import the Report component
 
 const App = () => {
     return (
@@ -17,12 +19,14 @@ const App = () => {
                 <Route path="/" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/account" element={<Account />} /> {/* Add account route */}
+                <Route path="/report" element={<Report />} /> {/* Add the report route */}
+                <Route path="/account" element={<Account />} />
                 <Route path="/overview" element={<Overview />} />
                 <Route path="/news" element={<News />} />
                 <Route path="/events" element={<Events />} />
                 <Route path="/resources" element={<Resources />} />
-                <Route path="/chat" element={<ChatPage />} /> {/* Add chat route */}
+                <Route path="/chat" element={<ChatPage />} />
+                <Route path="/notifications" element={<NotificationPage />} /> {/* Add notifications route */}
             </Routes>
         </Router>
     );
