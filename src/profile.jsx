@@ -133,7 +133,7 @@ const Profile = () => {
                     <div className="text-center space-y-4">
                         <h3 className="text-xl font-semibold text-gray-800">Profile Setup Complete!</h3>
                         <p className="text-gray-600">Thank you for completing your profile. You're all set!</p>
-                        <button type="button" onClick={finishProfile} className="w-full bg-green-600 text-white py-2 rounded-md">Finish</button>
+                        <button type="button" onClick={finishProfile} className="w-full bg-blue-600 text-white py-2 rounded-md">Finish</button>
                     </div>
                 )}
             </div>
