@@ -35,7 +35,7 @@ const Profile = () => {
         const token = localStorage.getItem('token'); // Retrieve token
 
         try {
-            const response = await fetch('/api/profile/create', {
+            const response = await fetch('https://liberty-link-server.onrender.com/profile/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
