@@ -13,7 +13,7 @@ const Login = () => {
         setErrorMessage(''); // Clear any previous error messages
 
         try {
-            const response = await fetch('https://your-api-url.com/users/login', {
+            const response = await fetch('https://liberty-link-server.onrender.com/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const Login = () => {
             localStorage.setItem('token', data.token);
 
             // Navigate to the profile page
-            navigate('/profile');
+            navigate('/home');
         } catch (error) {
             setErrorMessage(error.message); // Set the error message to display
         }

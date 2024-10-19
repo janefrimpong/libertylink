@@ -12,7 +12,7 @@ const SignUp = () => {
         setErrorMessage(''); // Clear any previous error messages
 
         try {
-            const response = await fetch('https://your-api-url.com/users/signup', {
+            const response = await fetch('https://liberty-link-server.onrender.com/users/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
