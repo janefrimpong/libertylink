@@ -13,6 +13,7 @@ import NotificationPage from './NotificationPage'; // Import the Notification co
 import Report from './Report'; // Import the Report component
 import LibertyQuest from './LibertyQuest';
 import SignUp from './SignUp';
+import Sidebar from './Sidebar';
 
 const App = () => {
     return (
@@ -29,6 +30,7 @@ const App = () => {
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/chat" element={<ChatPage />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/sidebar" element={<Sidebar />} />
                 <Route path="/libertyquest" element={<LibertyQuest />} />
                 <Route path="/notifications" element={<NotificationPage />} /> {/* Add notifications route */}
             </Routes>

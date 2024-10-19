@@ -153,19 +153,24 @@ const Home = () => {
                 <div className="flex space-x-4 mb-6 overflow-x-auto scrollbar-hide">
                     {/* Community Groups Section */}
                     <div className="min-w-[300px] max-w-sm">
-                        <h3 className="text-xl font-bold mb-4 text-center">Community Groups</h3>
-                        <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
-                            <button 
-                                onClick={() => window.open(getWhatsAppGroupLink(), '_blank')} 
-                                className="bg-white shadow-md rounded-lg overflow-hidden flex-shrink-0 w-full">
-                                <img className="w-full h-32 object-cover" src={photo1} alt="Community Group" />
-                                <div className="p-4">
-                                    <h4 className="text-lg font-bold hover:text-blue-600">{nationality} Group</h4>
-                                    <p className="text-gray-600 text-center">Join the WhatsApp group {nationality}</p>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
+    <h3 className="text-xl font-bold mb-4 text-center">Community Groups</h3>
+    <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
+        {/* Link to WhatsApp group */}
+        <a 
+            href="https://chat.whatsapp.com/HzCDP9euIag2vgAAdplcJm"  
+            target="_blank"  
+            rel="noopener noreferrer"  
+            className="bg-white shadow-md rounded-lg overflow-hidden flex-shrink-0 w-full"
+        >
+            <img className="w-full h-32 object-cover" src={photo1} alt="Community Group" />
+            <div className="p-4">
+                <h4 className="text-lg font-bold hover:text-blue-600">{nationality} Group</h4>
+                <p className="text-gray-600 text-center">Join the WhatsApp group {nationality}</p>
+            </div>
+        </a>
+    </div>
+</div>
+
 
                     {/* Reports Section */}
                     <div className="min-w-[300px] max-w-sm">
