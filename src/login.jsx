@@ -27,10 +27,11 @@ const Login = () => {
             }
 
             const data = await response.json();
-            // Store the token (e.g., in local storage or context)
+            // Store the token and user ID (assuming the user ID is in the response)
             localStorage.setItem('token', data.token);
+            localStorage.setItem('userId', data._id); // Store user ID from login response
 
-            // Navigate to the profile page
+            // Navigate to the home page or account page
             navigate('/home');
         } catch (error) {
             setErrorMessage(error.message); // Set the error message to display
@@ -45,7 +46,7 @@ const Login = () => {
 
                 {errorMessage && (
                     <div className="mb-4 p-3 bg-red-100 text-red-700 border border-red-300 rounded">
-                        {errorMessage} {/* Display the error message */}
+                        {errorMessage}
                     </div>
                 )}
 
@@ -89,7 +90,6 @@ const Login = () => {
                 </div>
 
                 <div className="mt-4 space-y-2">
-                    {/* Social login links */}
                     <a href="https://your-google-login-url.com" className="flex items-center justify-center w-full px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">
                         <FaGoogle className="mr-2" /> Login with Google
                     </a>

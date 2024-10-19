@@ -50,7 +50,7 @@ const LibertyQuest = () => {
             {/* Main Content */}
             <main className="flex-grow p-8 overflow-auto">
                 <div className="flex justify-between items-center">
-                    <button onClick={toggleSidebar} className="mb-4 text-gray-600 focus:outline-none" aria-label="Toggle Sidebar">
+                    <button onClick={toggleSidebar} className="mb-10 text-gray-600 focus:outline-none" aria-label="Toggle Sidebar">
                         <FaBars className="text-2xl" />
                     </button>
                 </div>
