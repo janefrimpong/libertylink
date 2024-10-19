@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import BottomNav from './BottomNav'; // Import the BottomNav component
 
 const Account = () => {
     // Sample user data; replace this with actual user data from your state management or context
-    const userData = {
+    const [userData, setUserData] = useState({
         fullName: "John Doe",
         mobileNumber: "+233 123 456 789",
-        nationality: "Ghana"
-    };
+        nationality: "Ghana",
+        profilePicture: "https://via.placeholder.com/150" // Placeholder for the profile picture URL
+    });
 
     const navigate = useNavigate(); // useNavigate hook for navigation
 
@@ -17,19 +19,28 @@ const Account = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 relative">
+        <div className="flex flex-col min-h-screen bg-gray-100 p-4 relative">
             {/* Logout button positioned absolutely at the top right corner */}
             <button 
                 onClick={handleLogout}
-                className="absolute top-10 right-4 border border-blue-600 text-blue-600 py-1 px-3 rounded-md hover:bg-blue-600 hover:text-white transition"
+                className="absolute top-10 right-4  border  py-1 px-3 rounded-md hover:bg-black hover:text-white transition"
                 aria-label="Logout"
             >
                 Logout
             </button>
 
-            <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
+            <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg mx-auto mt-16">
                 <h2 className="text-2xl font-bold mb-2 text-gray-800">Account Information</h2>
-                <p className="text-gray-600 mb-6">Here are your account details.</p>
+                <p className="text-gray-600 font-semibold mb-4">Profile</p>
+
+                {/* Profile Picture */}
+                <div className="mb-4">
+                    <img 
+                        src={userData.profilePicture} 
+                        alt="Profile"
+                        className="w-32 h-32 rounded-full border-2 border-gray-300"
+                    />
+                </div>
 
                 <div className="space-y-4">
                     <div>
@@ -48,11 +59,14 @@ const Account = () => {
 
                 <button 
                     onClick={() => navigate('/profile')} 
-                    className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md"
+                    className="mt-6 w-full bg-gray-600 text-white py-2 rounded-md"
                 >
                     Edit Profile
                 </button>
             </div>
+
+            {/* Bottom Navigation */}
+            <BottomNav />
         </div>
     );
 };

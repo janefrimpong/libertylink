@@ -6,6 +6,7 @@ import photo3 from './assets/components/3.jpg';
 import photo4 from './assets/components/4.jpg';
 
 import { useNavigate } from 'react-router-dom';
+import BottomNav from './BottomNav';
 
 const Home = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -78,16 +79,16 @@ const Home = () => {
                 </div>
                 <ul className="space-y-2">
                     <li>
-                        <button onClick={() => navigateTo('/overview')} className="text-blue-600 hover:underline">Human Rights Overview</button>
+                        <button onClick={() => navigateTo('/overview')} className=" hover:underline">Human Rights Overview</button>
                     </li>
                     <li>
-                        <button onClick={() => navigateTo('/news')} className="text-blue-600 hover:underline">Recent News</button>
+                        <button onClick={() => navigateTo('/news')} className="hover:underline">Recent News</button>
                     </li>
                     <li>
-                        <button onClick={() => navigateTo('/events')} className="text-blue-600 hover:underline">Events</button>
+                        <button onClick={() => navigateTo('/events')} className="hover:underline">Events</button>
                     </li>
                     <li>
-                        <button onClick={() => navigateTo('/resources')} className="text-blue-600 hover:underline">Resources</button>
+                        <button onClick={() => navigateTo('/resources')} className="hover:underline">Resources</button>
                     </li>
                 </ul>
             </aside>
@@ -103,7 +104,7 @@ const Home = () => {
                     <div className="relative">
                         <button 
                             onClick={() => navigateTo('/notifications')} 
-                            className="relative text-blue-600 focus:outline-none"
+                            className="relative  focus:outline-none"
                             aria-label="Notifications"
                         >
                             <FaBell className="text-2xl" />
@@ -113,8 +114,10 @@ const Home = () => {
                     </div>
                 </div>
 
-                <h2 className="text-2xl font-bold mb-4 text-gray-800">Welcome to the Human Rights Portal</h2>
-                <p className="text-gray-600 mb-6">Explore key information on human rights and engage with our community.</p>
+                <h1 className="text-2xl  font-bold mb-10 text-gray-800">Welcome to LibertyLink</h1>
+                <p className=" font-bold  mb-12"><i>Empowering Voices, Connecting Rights</i></p>
+                
+                
 
                 {/* Image Slider */}
                 <div className="relative w-full mb-6 h-64 overflow-hidden rounded-lg">
@@ -200,17 +203,7 @@ const Home = () => {
             </main>
 
             {/* Bottom Navigation Bar */}
-            <nav className="fixed bottom-0 left-0 right-0 bg-white shadow-lg flex justify-around p-2">
-                <button onClick={() => navigateTo('/home')} className="text-blue-600" aria-label="Home">
-                    <FaHome className="text-2xl" />
-                </button>
-                <button onClick={() => navigateTo('/chat')} className="text-blue-600" aria-label="Chat">
-                    <FaRobot className="text-2xl" />
-                </button>
-                <button onClick={() => navigateTo('/account')} className="text-blue-600" aria-label="Profile">
-                    <FaUser className="text-2xl" />
-                </button>
-            </nav>
+            <BottomNav/>
         </div>
     );
 };

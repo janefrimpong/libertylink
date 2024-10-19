@@ -15,7 +15,7 @@ const BottomNav = () => {
                 <FaRobot className="text-xl" />
                 <span className="text-sm">Chatbot</span>
             </button>
-            <button onClick={() => navigate('/profile')} className="flex flex-col items-center">
+            <button onClick={() => navigate('/account')} className="flex flex-col items-center">
                 <FaUser className="text-xl" />
                 <span className="text-sm">Account</span>
             </button>

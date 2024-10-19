@@ -1,141 +1,176 @@
-// Profile.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-    const [step, setStep] = useState(1); // Track the current step of the profile setup
-    const navigate = useNavigate(); // Add useNavigate hook
+    const [fullName, setFullName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+    const [nationality, setNationality] = useState('');
+    const [preferredLanguage, setPreferredLanguage] = useState('');
+    const [areasOfInterest, setAreasOfInterest] = useState([]);
+    const [idFile, setIdFile] = useState(null);
+    const [profilePicture, setProfilePicture] = useState(null);
+    const navigate = useNavigate();
 
-    const nextStep = () => setStep(prev => prev + 1);
-    const prevStep = () => setStep(prev => prev - 1);
+    const finishProfile = async () => {
+        // Check for required fields
+        if (!fullName || !phoneNumber || !nationality || !preferredLanguage || areasOfInterest.length === 0) {
+            alert('Please fill all fields in Step 1 and Step 2.');
+            return;
+        }
 
-    const finishProfile = () => {
-        // Navigate to Home page
-        navigate('/home');
+        if (!idFile || !profilePicture) {
+            alert('Please upload your ID and Profile Picture.');
+            return;
+        }
+
+        const profileData = {
+            fullName,
+            phoneNumber,
+            nationality,
+            preferredLanguage,
+            areasOfInterest,
+            // Add any other relevant data
+        };
+
+        const token = localStorage.getItem('token'); // Retrieve token
+
+        try {
+            const response = await fetch('/api/profile/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(profileData),
+            });
+
+            if (!response.ok) {
+                throw new Error('Profile creation failed');
+            }
+
+            // Navigate to Home page
+            navigate('/home');
+        } catch (error) {
+            console.error('Profile creation error:', error);
+            // Show an error message and retry
+            alert('Profile creation failed. Please try again.');
+        }
     };
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4">
             <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold mb-2 text-gray-800">Set Up Your Profile</h2>
-                <p className="text-gray-600 mb-6">Please provide your details to complete your profile setup.</p>
+                <h2 className="text-2xl font-bold mb-4 text-gray-800">Set Up Your Profile</h2>
 
-                {/* Step 1: Basic Information */}
-                {step === 1 && (
-                    <form className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Full Name</label>
-                            <input type="text" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your full name" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Mobile Phone Number</label>
-                            <input type="tel" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your mobile phone number" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Nationality</label>
-                            <select className="mt-1 w-full px-3 py-2 border rounded-md">
-                                <option>Select your nationality</option>
-                                <option>Ghana</option>
-                                <option>Nigeria</option>
-                                <option>Gambia</option>
-                                <option>South Africa</option>
-                            </select>
-                        </div>
-                        <button type="button" onClick={nextStep} className="w-full bg-blue-600 text-white py-2 rounded-md">Next</button>
-                    </form>
-                )}
-
-                {/* Step 2: Additional Information */}
-                {step === 2 && (
-                    <form className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Preferred Language</label>
-                            <select className="mt-1 w-full px-3 py-2 border rounded-md">
-                                <option>Select your preferred language</option>
-                                <option>English</option>
-                                <option>French</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Occupation</label>
-                            <input type="text" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your occupation" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Organization</label>
-                            <input type="text" className="mt-1 w-full px-3 py-2 border rounded-md" placeholder="Enter your organization" />
-                        </div>
-                        <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
-                        <button type="button" onClick={nextStep} className="bg-blue-600 text-white py-2 px-4 rounded-md">Next</button>
-                    </form>
-                )}
-
-                {/* Step 3: Areas of Interest */}
-                {step === 3 && (
-                    <form className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Areas of Interest in Human Rights</label>
-                            <div className="grid grid-cols-2 gap-2 mt-2">
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Civil Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Economic Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Cultural Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Children's Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Disability Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Digital Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Social Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Political Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Labor Rights
-                                </label>
-                                <label className="flex items-center">
-                                    <input type="checkbox" className="mr-2" /> Environmental Rights
-                                </label>
-                            </div>
-                        </div>
-                        <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
-                        <button type="button" onClick={nextStep} className="bg-blue-600 text-white py-2 px-4 rounded-md">Next</button>
-                    </form>
-                )}
-
-                {/* Step 4: File Uploads */}
-                {step === 4 && (
-                    <form className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Upload ID</label>
-                            <input type="file" className="mt-1 w-full" />
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700">Upload Profile Picture</label>
-                            <input type="file" className="mt-1 w-full" />
-                        </div>
-                        <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-md mr-2">Back</button>
-                        <button type="button" onClick={nextStep} className="bg-blue-600 text-white py-2 px-4 rounded-md">Next</button>
-                    </form>
-                )}
-
-                {/* Step 5: Completion */}
-                {step === 5 && (
-                    <div className="text-center space-y-4">
-                        <h3 className="text-xl font-semibold text-gray-800">Profile Setup Complete!</h3>
-                        <p className="text-gray-600">Thank you for completing your profile. You're all set!</p>
-                        <button type="button" onClick={finishProfile} className="w-full bg-blue-600 text-white py-2 rounded-md">Finish</button>
+                <form className="space-y-4">
+                    {/* Full Name */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input
+                            type="text"
+                            className="mt-1 w-full px-3 py-2 border rounded-md"
+                            placeholder="Enter your full name"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            required
+                        />
                     </div>
-                )}
+
+                    {/* Mobile Phone Number */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Mobile Phone Number</label>
+                        <input
+                            type="tel"
+                            className="mt-1 w-full px-3 py-2 border rounded-md"
+                            placeholder="Enter your mobile phone number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                        />
+                    </div>
+
+                    {/* Nationality */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Nationality</label>
+                        <select
+                            className="mt-1 w-full px-3 py-2 border rounded-md"
+                            value={nationality}
+                            onChange={(e) => setNationality(e.target.value)}
+                            required
+                        >
+                            <option>Select your nationality</option>
+                            <option>Ghana</option>
+                            <option>Nigeria</option>
+                            <option>Gambia</option>
+                        </select>
+                    </div>
+
+                    {/* Preferred Language */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Preferred Language</label>
+                        <select
+                            className="mt-1 w-full px-3 py-2 border rounded-md"
+                            value={preferredLanguage}
+                            onChange={(e) => setPreferredLanguage(e.target.value)}
+                            required
+                        >
+                            <option>Select your preferred language</option>
+                            <option>English</option>
+                            <option>French</option>
+                        </select>
+                    </div>
+
+                    {/* Areas of Interest */}
+                    <div >
+                        <label className="block text-sm font-medium text-gray-700">Areas of Interest in Human Rights</label>
+                        <div className="grid grid-cols-2 gap-2 mt-2">
+                            {['Civil Rights', 'Economic Rights', 'Cultural Rights',  'Digital Rights', 'Social Rights', 'Political Rights'].map((interest) => (
+                                <label key={interest} className="flex items-center">
+                                    <input
+                                        type="checkbox"
+                                        className="mr-2"
+                                        value={interest}
+                                        onChange={(e) => {
+                                            if (e.target.checked) {
+                                                setAreasOfInterest((prev) => [...prev, interest]);
+                                            } else {
+                                                setAreasOfInterest((prev) => prev.filter((i) => i !== interest));
+                                            }
+                                        }}
+                                    />
+                                    {interest}
+                                </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Upload ID */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Upload ID</label>
+                        <input
+                            type="file"
+                            className="mt-1 w-full"
+                            onChange={(e) => setIdFile(e.target.files[0])}
+                            required
+                        />
+                    </div>
+
+                    {/* Upload Profile Picture */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Upload Profile Picture</label>
+                        <input
+                            type="file"
+                            className="mt-1 w-full"
+                            onChange={(e) => setProfilePicture(e.target.files[0])}
+                            required
+                        />
+                    </div>
+
+                    {/* Finish Button */}
+                    <button type="button" onClick={finishProfile} className="w-full bg-gray-600 text-white py-2 rounded-md">
+                        Finish
+                    </button>
+                </form>
             </div>
         </div>
     );
