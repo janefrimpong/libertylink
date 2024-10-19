@@ -11,6 +11,8 @@ import ChatPage from './ChatPage'; // Import your ChatPage component
 import Account from './Account'; // Import the Account component
 import NotificationPage from './NotificationPage'; // Import the Notification component
 import Report from './Report'; // Import the Report component
+import LibertyQuest from './LibertyQuest';
+import SignUp from './SignUp';
 
 const App = () => {
     return (
@@ -26,6 +28,8 @@ const App = () => {
                 <Route path="/events" element={<Events />} />
                 <Route path="/resources" element={<Resources />} />
                 <Route path="/chat" element={<ChatPage />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/libertyquest" element={<LibertyQuest />} />
                 <Route path="/notifications" element={<NotificationPage />} /> {/* Add notifications route */}
             </Routes>
         </Router>

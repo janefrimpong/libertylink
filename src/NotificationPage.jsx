@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import { FaHome, FaRobot, FaUser } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import BottomNav from './BottomNav';
 
 const NotificationPage = () => {
+    const navigate = useNavigate();
+
     // Sample notification data
     const [notifications, setNotifications] = useState([
         {
@@ -24,22 +29,27 @@ const NotificationPage = () => {
     ]);
 
     return (
-        <div className="min-h-screen bg-gray-100 p-6">
-            <h2 className="text-2xl font-bold mb-6 text-gray-800">Notifications</h2>
-            
-            <div className="space-y-4">
-                {notifications.length > 0 ? (
-                    notifications.map((notification) => (
-                        <div key={notification.id} className="bg-white p-4 rounded-lg shadow-md">
-                            <h3 className="text-lg font-semibold text-gray-800">{notification.title}</h3>
-                            <p className="text-sm text-gray-500">{notification.date}</p>
-                            <p className="mt-2 text-gray-700">{notification.description}</p>
-                        </div>
-                    ))
-                ) : (
-                    <p className="text-gray-600">No new notifications.</p>
-                )}
+        <div className="min-h-screen bg-gray-100 flex flex-col">
+            <div className="p-6 flex-grow">
+                <h2 className="text-2xl font-bold mb-6 text-gray-800">Notifications</h2>
+                
+                <div className="space-y-4">
+                    {notifications.length > 0 ? (
+                        notifications.map((notification) => (
+                            <div key={notification.id} className="bg-white p-4 rounded-lg shadow-md">
+                                <h3 className="text-lg font-semibold text-gray-800">{notification.title}</h3>
+                                <p className="text-sm text-gray-500">{notification.date}</p>
+                                <p className="mt-2 text-gray-700">{notification.description}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p className="text-gray-600">No new notifications.</p>
+                    )}
+                </div>
             </div>
+
+            {/* Bottom Navigation Bar */}
+            <BottomNav/>
         </div>
     );
 };
